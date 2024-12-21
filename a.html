@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guessing Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .score {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    button {
+      background: #ff4081;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #e20061;
+      transform: scale(1.1);
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 64, 129, 0.8);
+    }
+
+    .game-section {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .game-section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .game-section p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .game-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .game-section input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid #ff4081;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      width: 80%;
+      max-width: 300px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .game-section input:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 64, 129, 0.8);
+    }
+
+    .secret-code {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4caf50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .secret-code:hover {
+      background: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="score">
+      <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <button onclick="showSection('footballer')">Guess the Footballer</button>
+    
+    <button onclick="showSection('flag')">Guess the Flag</button>
+
+    <div id="footballer" class="game-section">
+      <h3>Guess the Footballer</h3>
+      <p>Clues: <span id="footballer-clues"></span></p>
+      <input type="text" id="footballer-guess" placeholder="Enter name..." />
+      <button onclick="checkFootballer()">Submit Guess</button>
+    </div>
+
+    
+    <div id="flag" class="game-section">
+      <h3>Guess the Flag</h3>
+      <p>Which country's flag is this? <span id="flag-clue"></span></p>
+      <input type="text" id="flag-guess" placeholder="Enter country..." />
+      <button onclick="checkFlag()">Submit Guess</button>
+    </div>
+  </div>
+
+  <button class="secret-code" onclick="checkSecretCode()">Secret Code</button>
+
+  <script>
+    let score = parseInt(localStorage.getItem('score')) || 0;
+    document.getElementById('score').textContent = score;
+
+    const footballers = [
+      { name: 'Lionel Messi', clues: 'Team: PSG, Nationality: Argentinian, Position: Forward' },
+      { name: 'Cristiano Ronaldo', clues: 'Team: Al-Nassr, Nationality: Portuguese, Position: Forward' },
+      { name: 'Neymar', clues: 'Team: Al-Hilal, Nationality: Brazilian, Position: Forward' },
+    ];
+
+    const cars = [
+      { brand: 'Bugatti', image: 'buggati.png' },
+      { brand: 'Audi', image: 'audi.png' },
+      { brand: 'BMW', image: 'bmw.png' },
+    ];
+
+    const flags = [
+      { country: 'Lebanon', emoji: '🇱🇧' },
+      { country: 'France', emoji: '🇫🇷' },
+      { country: 'Germany', emoji: '🇩🇪' },
+      { country: 'Italy', emoji: '🇮🇹' },
+      { country: 'Japan', emoji: '🇯🇵' },
+    ];
+
+    function showSection(section) {
+      document.querySelectorAll('.game-section').forEach(s => s.style.display = 'none');
+      document.getElementById(section).style.display = 'block';
+
+      if (section === 'footballer') setRandomFootballer();
+      if (section === 'car') setRandomCar();
+      if (section === 'flag') setRandomFlag();
+    }
+
+    function setRandomFootballer() {
+      const footballer = footballers[Math.floor(Math.random() * footballers.length)];
+      document.getElementById('footballer-clues').textContent = footballer.clues;
+      document.getElementById('footballer-guess').dataset.name = footballer.name.toLowerCase();
+    }
+
+    function setRandomCar() {
+      const car = cars[Math.floor(Math.random() * cars.length)];
+      document.getElementById('car-img').src = car.image;
+      document.getElementById('car-guess').dataset.brand = car.brand.toLowerCase();
+    }
+
+    function setRandomFlag() {
+      const flag = flags[Math.floor(Math.random() * flags.length)];
+      document.getElementById('flag-clue').textContent = flag.emoji;
+      document.getElementById('flag-guess').dataset.country = flag.country.toLowerCase();
+    }
+
+    function checkFootballer() {
+      const guess = document.getElementById('footballer-guess').value.trim().toLowerCase();
+      if (guess === document.getElementById('footballer-guess').dataset.name) {
+        updateScore(10);
+        alert('Correct!');
+        setRandomFootballer();
+      } else {
+        alert('Incorrect! Try again.');
+      }
+    }
+
+    function checkCar() {
+      const guess = document.getElementById('car-guess').value.trim().toLowerCase();
+      if (guess === document.getElementById('car-guess').dataset.brand) {
+        updateScore(10);
+        alert('Correct!');
+        setRandomCar();
+      } else {
+        alert('Incorrect! Try again.');
+      }
+    }
+
+    function checkFlag() {
+      const guess = document.getElementById('flag-guess').value.trim().toLowerCase();
+      if (guess === document.getElementById('flag-guess').dataset.country) {
+        updateScore(10);
+        alert('Correct!');
+        setRandomFlag();
+      } else {
+        alert('Incorrect! Try again.');
+      }
+    }
+
+    function checkSecretCode() {
+      const code = prompt('Enter the secret code:');
+      if (code === '333939839393') {
+        updateScore(1000000);
+        alert('Secret code correct! 1,000,000 points added!');
+      } else {
+        alert('Incorrect secret code!');
+      }
+    }
+
+    function updateScore(points) {
+      score += points;
+      localStorage.setItem('score', score);
+      document.getElementById('score').textContent = score;
+    }
+
+    window.onload = () => {
+      setRandomFootballer();
+      setRandomCar();
+      setRandomFlag();
+    };
+  </script>
+
+</body>
+</html>
