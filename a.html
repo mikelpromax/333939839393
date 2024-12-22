@@ -152,9 +152,20 @@
     document.getElementById('score').textContent = score;
 
     const footballers = [
-      { name: 'Lionel Messi', clues: 'Team: PSG, Nationality: Argentinian, Position: Forward' },
-      { name: 'Cristiano Ronaldo', clues: 'Team: Al-Nassr, Nationality: Portuguese, Position: Forward' },
+      { name: 'Messi', clues: 'Team: Inter miami, Nationality: Argentinian, Position: Forward' },
+      { name: 'Ronaldo', clues: 'Team: Al-Nassr, Nationality: Portuguese, Position: Forward' },
       { name: 'Neymar', clues: 'Team: Al-Hilal, Nationality: Brazilian, Position: Forward' },
+      { name: 'Lamine Yamal', clues: 'Team: Barcelona, Nationality: spanish, Position: Forward,age:17y/o' },
+      { name: 'Lewandowski', clues: 'Team: barcellona, Nationality: spanish, Position: Forward' },
+      { name: 'griezmann', clues: 'Team: Atletico madrid, Nationality: French, Position: Forward' },
+      { name: 'Cubasi', clues: 'Team: barcellona, Nationality: spanish, Position: defender age:17' },
+      { name: 'Sergio ramos', clues: 'Team: sevilla, Nationality: spanish, Position:defender' },
+      { name: 'Mouhamad salah', clues: 'Team: liverpool, Nationality: Egyptian, Position: Forward' },
+      { name: 'Raphinha', clues: 'Team: Barcellona, Nationality: Brazilian, Position: Forward' },
+      { name: 'Rodriguez', clues: 'Team: rayo vallecanno, Nationality:Colombian, Position: Forward' },
+      { name: 'Hakimi', clues: 'Team: Psg, Nationality:Moroccan, Position: defender' },
+      { name: 'Emiliano Martinez', clues: 'Team: Aston Villa , Nationality: Argentinian, Position: GoalKeeper' },
+      { name: 'Verrati', clues: 'Team: PSG, Nationality:Italian, Position: mid' },
     ];
 
     const cars = [
@@ -164,12 +175,102 @@
     ];
 
     const flags = [
-      { country: 'Lebanon', emoji: '🇱🇧' },
-      { country: 'France', emoji: '🇫🇷' },
-      { country: 'Germany', emoji: '🇩🇪' },
-      { country: 'Italy', emoji: '🇮🇹' },
-      { country: 'Japan', emoji: '🇯🇵' },
-    ];
+  { country: 'Lebanon', emoji: '🇱🇧' }, // First Lebanon
+  { country: 'Afghanistan', emoji: '🇦🇫' },
+  { country: 'Albania', emoji: '🇦🇱' },
+  { country: 'Algeria', emoji: '🇩🇿' },
+  { country: 'Andorra', emoji: '🇦🇩' },
+  { country: 'Angola', emoji: '🇦🇴' },
+  { country: 'Argentina', emoji: '🇦🇷' },
+  { country: 'Armenia', emoji: '🇦🇲' },
+  { country: 'Australia', emoji: '🇦🇺' },
+  { country: 'Austria', emoji: '🇦🇹' },
+  { country: 'Azerbaijan', emoji: '🇦🇿' },
+  { country: 'Bahamas', emoji: '🇧🇸' },
+  { country: 'Bahrain', emoji: '🇧🇭' },
+  { country: 'Bangladesh', emoji: '🇧🇩' },
+  { country: 'Barbados', emoji: '🇧🇧' },
+  { country: 'Belarus', emoji: '🇧🇾' },
+  { country: 'Belgium', emoji: '🇧🇪' },
+  { country: 'Belize', emoji: '🇧🇿' },
+  { country: 'Benin', emoji: '🇧🇯' },
+  { country: 'Bhutan', emoji: '🇧🇹' },
+  { country: 'Bolivia', emoji: '🇧🇴' },
+  { country: 'Bosnia and Herzegovina', emoji: '🇧🇦' },
+  { country: 'Botswana', emoji: '🇧🇼' },
+  { country: 'Brazil', emoji: '🇧🇷' },
+  { country: 'Brunei', emoji: '🇧🇳' },
+  { country: 'Bulgaria', emoji: '🇧🇬' },
+  { country: 'Burkina Faso', emoji: '🇧🇫' },
+  { country: 'Burundi', emoji: '🇧🇮' },
+  { country: 'Cabo Verde', emoji: '🇨🇻' },
+  { country: 'Cambodia', emoji: '🇰🇭' },
+  { country: 'Cameroon', emoji: '🇨🇲' },
+  { country: 'Canada', emoji: '🇨🇦' },
+  { country: 'Central African Republic', emoji: '🇨🇫' },
+  { country: 'Chad', emoji: '🇹🇩' },
+  { country: 'Chile', emoji: '🇨🇱' },
+  { country: 'China', emoji: '🇨🇳' },
+  { country: 'Colombia', emoji: '🇨🇴' },
+  { country: 'Comoros', emoji: '🇰🇲' },
+  { country: 'Congo (Congo-Brazzaville)', emoji: '🇨🇬' },
+  { country: 'Congo (Congo-Kinshasa)', emoji: '🇨🇩' },
+  { country: 'Costa Rica', emoji: '🇨🇷' },
+  { country: 'Croatia', emoji: '🇭🇷' },
+  { country: 'Cuba', emoji: '🇨🇺' },
+  { country: 'Cyprus', emoji: '🇨🇾' },
+  { country: 'Czech Republic', emoji: '🇨🇿' },
+  { country: 'Denmark', emoji: '🇩🇰' },
+  { country: 'Djibouti', emoji: '🇩🇯' },
+  { country: 'Dominica', emoji: '🇩🇲' },
+  { country: 'Dominican Republic', emoji: '🇩🇴' },
+  { country: 'Ecuador', emoji: '🇪🇨' },
+  { country: 'Egypt', emoji: '🇪🇬' },
+  { country: 'El Salvador', emoji: '🇸🇻' },
+  { country: 'Equatorial Guinea', emoji: '🇬🇶' },
+  { country: 'Eritrea', emoji: '🇪🇷' },
+  { country: 'Estonia', emoji: '🇪🇪' },
+  { country: 'Eswatini', emoji: '🇸🇿' },
+  { country: 'Ethiopia', emoji: '🇪🇹' },
+  { country: 'Fiji', emoji: '🇫🇯' },
+  { country: 'Finland', emoji: '🇫🇮' },
+  { country: 'France', emoji: '🇫🇷' },
+  { country: 'Gabon', emoji: '🇬🇦' },
+  { country: 'Gambia', emoji: '🇬🇲' },
+  { country: 'Georgia', emoji: '🇬🇪' },
+  { country: 'Germany', emoji: '🇩🇪' },
+  { country: 'Ghana', emoji: '🇬🇭' },
+  { country: 'Lebanon', emoji: '🇱🇧' }, // First middle Lebanon
+  { country: 'Greece', emoji: '🇬🇷' },
+  { country: 'Grenada', emoji: '🇬🇩' },
+  { country: 'Guatemala', emoji: '🇬🇹' },
+  { country: 'Guinea', emoji: '🇬🇳' },
+  { country: 'Guinea-Bissau', emoji: '🇬🇼' },
+  { country: 'Guyana', emoji: '🇬🇾' },
+  { country: 'Haiti', emoji: '🇭🇹' },
+  { country: 'Honduras', emoji: '🇭🇳' },
+  { country: 'Hungary', emoji: '🇭🇺' },
+  { country: 'Iceland', emoji: '🇮🇸' },
+  { country: 'India', emoji: '🇮🇳' },
+  { country: 'Indonesia', emoji: '🇮🇩' },
+  { country: 'Iran', emoji: '🇮🇷' },
+  { country: 'Iraq', emoji: '🇮🇶' },
+  { country: 'Ireland', emoji: '🇮🇪' },
+  { country: 'Israel', emoji: '🇮🇱' },
+  { country: 'Italy', emoji: '🇮🇹' },
+  { country: 'Jamaica', emoji: '🇯🇲' },
+  { country: 'Japan', emoji: '🇯🇵' },
+  { country: 'Jordan', emoji: '🇯🇴' },
+  { country: 'Kazakhstan', emoji: '🇰🇿' },
+  { country: 'Kenya', emoji: '🇰🇪' },
+  { country: 'Kiribati', emoji: '🇰🇮' },
+  { country: 'Lebanon', emoji: '🇱🇧' }, // Second middle Lebanon
+  { country: 'Kuwait', emoji: '🇰🇼' },
+  { country: 'Kyrgyzstan', emoji: '🇰🇬' },
+  { country: 'Laos', emoji: '🇱🇦' },
+  { country: 'Latvia', emoji: '🇱🇻' },
+  { country: 'Lebanon', emoji: '🇱🇧' }, // Last Lebanon
+];
 
     function showSection(section) {
       document.querySelectorAll('.game-section').forEach(s => s.style.display = 'none');
@@ -199,15 +300,17 @@
     }
 
     function checkFootballer() {
-      const guess = document.getElementById('footballer-guess').value.trim().toLowerCase();
-      if (guess === document.getElementById('footballer-guess').dataset.name) {
-        updateScore(10);
-        alert('Correct!');
-        setRandomFootballer();
-      } else {
-        alert('Incorrect! Try again.');
-      }
-    }
+  const input = document.getElementById('footballer-guess');
+  const guess = input.value.trim().toLowerCase();
+  if (guess === input.dataset.name) {
+    updateScore(10);
+    alert('Correct!');
+    setRandomFootballer();
+    input.value = ''; // Clear the input field
+  } else {
+    alert('Incorrect! Try again.');
+  }
+}
 
     function checkCar() {
       const guess = document.getElementById('car-guess').value.trim().toLowerCase();
@@ -221,15 +324,17 @@
     }
 
     function checkFlag() {
-      const guess = document.getElementById('flag-guess').value.trim().toLowerCase();
-      if (guess === document.getElementById('flag-guess').dataset.country) {
-        updateScore(10);
-        alert('Correct!');
-        setRandomFlag();
-      } else {
-        alert('Incorrect! Try again.');
-      }
-    }
+  const input = document.getElementById('flag-guess');
+  const guess = input.value.trim().toLowerCase();
+  if (guess === input.dataset.country) {
+    updateScore(10);
+    alert('Correct!');
+    setRandomFlag();
+    input.value = ''; // Clear the input field
+  } else {
+    alert('Incorrect! Try again.');
+  }
+}
 
     function checkSecretCode() {
       const code = prompt('Enter the secret code:');
